@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>The value is {{ value }}</h1>
+
+<h2>The value2 os {{ value2 }}</h2>
+
+<ul>
+    {% for p in profiles_page %}
+        <li>
+            {{ p }}
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
