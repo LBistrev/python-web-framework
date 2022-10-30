@@ -1,4 +1,4 @@
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic as views
 
 from testing_demos.web.models import Profile
@@ -28,6 +28,15 @@ class ProfileListView(views.ListView):
             context[self.context_user_key] = self.no_logged_in_user_value
 
         return context
+
+
+class ProfileEditView(views.UpdateView):
+    model = Profile
+    template_name = 'profiles/create.html'
+    fields = '__all__'
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy('details profile', kwargs={'pk': self.object.pk, })
 
 
 class ProfileDetailsView(views.DetailView):
